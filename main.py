@@ -36,15 +36,16 @@ while not game_over:
 
     #detect collision with boundary
     if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290:
-        game_over = True
-        score.end_game()
+        score.reset()
+        snake.reset()
 
     #detect collision with tail
-
     for segment in snake.snakes[1::]:
         if snake.head.distance(segment) < 10:
-            game_over = True
-            score.end_game()
+            pass
+        elif snake.head.distance(segment) < 10:
+            score.reset()
+            snake.reset()
 
 
 screen.exitonclick()
